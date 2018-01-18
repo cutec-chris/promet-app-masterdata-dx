@@ -1,5 +1,5 @@
 var Masterdata;
-dhtmlxEvent(window,"load",function(){
+window.addEventListener('AfterLogin',function(){
   Masterdata = newPrometList('masterdata','Stammdaten');
   Masterdata.Grid.setHeader(["Nummer","Kurztext","Version","Status","Kategorie"]);
   Masterdata.Grid.setColumnIds('ID,SHORTTEXT,VERSION,STATUS,CATEGORY')
