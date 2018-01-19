@@ -8,3 +8,10 @@ window.addEventListener('AfterLogin',function(){
   Masterdata.Grid.setInitWidths('150,*,70,100,150');
   Masterdata.Grid.init();
 });
+window.addEventListener('AfterLogout',function(){
+  Masterdata.Grid.destructor();
+  Masterdata.Page.remove();
+  delete Masterdata;
+  Masterdata = {};
+  Masterdata = null;
+});
