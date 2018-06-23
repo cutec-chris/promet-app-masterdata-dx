@@ -1,17 +1,31 @@
-var Masterdata;
-window.addEventListener('AfterLogin',function(){
-  Masterdata = newPrometList('masterdata','Stammdaten');
-  Masterdata.Grid.setHeader(["Nummer","Kurztext","Version","Status","Kategorie"]);
-  Masterdata.Grid.setColumnIds('ID,SHORTTEXT,VERSION,STATUS,CATEGORY')
-  Masterdata.Grid.setColTypes("ro,ro,ro,ro,ro");
-  Masterdata.Grid.attachHeader("#text_filter,#text_filter,#text_filter,#select_filter,#text_filter");
-  Masterdata.Grid.setInitWidths('150,*,70,100,150');
-  Masterdata.Grid.init();
+﻿rtl.module("masterdata",["System","JS","Web","Classes","Avamm","webrouter","AvammForms","dhtmlx_base","SysUtils"],function () {
+  "use strict";
+  var $mod = this;
+  rtl.createClass($mod,"TMasterdataForm",pas.AvammForms.TAvammForm,function () {
+  });
+  this.Masterdata = null;
+  this.ShowMasterdata = function (URl, aRoute, Params) {
+    var aForm = null;
+    aForm = $mod.TMasterdataForm.$create("Create$1",[pas.AvammForms.TAvammFormMode.fmWindow,"masterdata",Params.GetValue("Id")]);
+  };
+  this.ShowMasterdataList = function (URl, aRoute, Params) {
+    var aParent = null;
+    if ($mod.Masterdata === null) {
+      aParent = rtl.getObject(pas.Avamm.GetAvammContainer());
+      $mod.Masterdata = pas.AvammForms.TAvammListForm.$create("Create$1",[aParent,"masterdata"]);
+      var $with1 = $mod.Masterdata;
+      $with1.Grid.setHeader("Nummer,Kurztext,Version,Status,Kategorie",",",Array.of({}));
+      $with1.Grid.setColumnIds("ID,SHORTTEXT,VERSION,STATUS,CATEGORY");
+      $with1.Grid.attachHeader("#text_filter,#text_filter,#text_filter,#select_filter,#text_filter");
+      $with1.Grid.setInitWidths("150,*,70,100,150");
+      $with1.Grid.init();
+    };
+    $mod.Masterdata.Show();
+  };
+  $mod.$resourcestrings = {strMasterdata: {org: "Artikel"}};
+  $mod.$init = function () {
+    pas.Avamm.RegisterSidebarRoute(rtl.getResStr(pas.masterdata,"strMasterdata"),"masterdata",$mod.ShowMasterdataList);
+    pas.webrouter.Router().RegisterRoute("\/masterdata\/by-id\/:Id\/",$mod.ShowMasterdata,false);
+  };
 });
-window.addEventListener('AfterLogout',function(){
-  Masterdata.Grid.destructor();
-  Masterdata.Page.remove();
-  delete Masterdata;
-  Masterdata = {};
-  Masterdata = null;
-});
+//# sourceMappingURL=masterdata.js.map
