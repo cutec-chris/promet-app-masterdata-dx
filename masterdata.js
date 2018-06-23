@@ -6,7 +6,7 @@
   this.Masterdata = null;
   this.ShowMasterdata = function (URl, aRoute, Params) {
     var aForm = null;
-    aForm = $mod.TMasterdataForm.$create("Create$1",[pas.AvammForms.TAvammFormMode.fmWindow,"masterdata",Params.GetValue("Id")]);
+    aForm = $mod.TMasterdataForm.$create("Create$1",[pas.AvammForms.TAvammFormMode.fmTab,"masterdata",Params.GetValue("Id")]);
   };
   this.ShowMasterdataList = function (URl, aRoute, Params) {
     var aParent = null;
