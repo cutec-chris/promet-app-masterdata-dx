@@ -41,7 +41,8 @@ begin
 end;
 
 initialization
-  RegisterSidebarRoute(strMasterdata,'masterdata',@ShowMasterdataList);
+  if getRight('masterdata')>0 then
+    RegisterSidebarRoute(strMasterdata,'masterdata',@ShowMasterdataList);
   Router.RegisterRoute('/masterdata/by-id/:Id/',@ShowMasterdata);
 end.
 

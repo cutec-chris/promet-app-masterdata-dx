@@ -24,7 +24,7 @@
   };
   $mod.$resourcestrings = {strMasterdata: {org: "Artikel"}};
   $mod.$init = function () {
-    pas.Avamm.RegisterSidebarRoute(rtl.getResStr(pas.masterdata,"strMasterdata"),"masterdata",$mod.ShowMasterdataList);
+    if (pas.Avamm.getRight("masterdata") > 0) pas.Avamm.RegisterSidebarRoute(rtl.getResStr(pas.masterdata,"strMasterdata"),"masterdata",$mod.ShowMasterdataList);
     pas.webrouter.Router().RegisterRoute("\/masterdata\/by-id\/:Id\/",$mod.ShowMasterdata,false);
   };
 });
