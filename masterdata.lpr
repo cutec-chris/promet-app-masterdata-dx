@@ -18,7 +18,7 @@ Procedure ShowMasterdata(URl : String; aRoute : TRoute; Params: TStrings);
 var
   aForm: TAvammForm;
 begin
-  aForm := TMasterdataForm.Create(fmTab,'masterdata',Params.Values['Id']);
+  aForm := TMasterdataForm.Create(fmInlineWindow,'masterdata',Params.Values['Id']);
 end;
 Procedure ShowMasterdataList(URl : String; aRoute : TRoute; Params: TStrings);
 var
