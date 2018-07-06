@@ -12,7 +12,7 @@
     var aParent = null;
     if ($mod.Masterdata === null) {
       aParent = rtl.getObject(pas.Avamm.GetAvammContainer());
-      $mod.Masterdata = pas.AvammForms.TAvammListForm.$create("Create$1",[aParent,"masterdata"]);
+      $mod.Masterdata = pas.AvammForms.TAvammListForm.$create("Create$1",[aParent,"masterdata","1C"]);
       var $with1 = $mod.Masterdata;
       $with1.Grid.setHeader("Nummer,Kurztext,Version,Status,Kategorie",",",Array.of({}));
       $with1.Grid.setColumnIds("ID,SHORTTEXT,VERSION,STATUS,CATEGORY");
