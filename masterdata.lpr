@@ -30,7 +30,7 @@ begin
       Masterdata := TAvammListForm.Create(aParent,'masterdata');
       with Masterdata do
         begin
-          Grid.setHeader('Nummer,Kurztext,Version,Status,Kategorie',',',TJSArray._of([]));
+          Grid.setHeader('Nummer,Kurztext,Version,Status,Kategorie');
           Grid.setColumnIds('ID,SHORTTEXT,VERSION,STATUS,CATEGORY');
           Grid.attachHeader('#text_filter,#text_filter,#text_filter,#select_filter,#text_filter');
           Grid.setInitWidths('150,*,70,100,150');

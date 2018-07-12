@@ -1,4 +1,4 @@
-﻿rtl.module("masterdata",["System","JS","Web","Classes","Avamm","webrouter","AvammForms","dhtmlx_base","SysUtils"],function () {
+﻿rtl.module("masterdata",["System","Web","Classes","Avamm","webrouter","AvammForms","dhtmlx_base","SysUtils"],function () {
   "use strict";
   var $mod = this;
   rtl.createClass($mod,"TMasterdataForm",pas.AvammForms.TAvammForm,function () {
@@ -12,9 +12,9 @@
     var aParent = null;
     if ($mod.Masterdata === null) {
       aParent = rtl.getObject(pas.Avamm.GetAvammContainer());
-      $mod.Masterdata = pas.AvammForms.TAvammListForm.$create("Create$1",[aParent,"masterdata","1C"]);
+      $mod.Masterdata = pas.AvammForms.TAvammListForm.$create("Create$2",[aParent,"masterdata","1C"]);
       var $with1 = $mod.Masterdata;
-      $with1.Grid.setHeader("Nummer,Kurztext,Version,Status,Kategorie",",",Array.of({}));
+      $with1.Grid.setHeader("Nummer,Kurztext,Version,Status,Kategorie");
       $with1.Grid.setColumnIds("ID,SHORTTEXT,VERSION,STATUS,CATEGORY");
       $with1.Grid.attachHeader("#text_filter,#text_filter,#text_filter,#select_filter,#text_filter");
       $with1.Grid.setInitWidths("150,*,70,100,150");
