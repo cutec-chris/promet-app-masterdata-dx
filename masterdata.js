@@ -31,18 +31,27 @@
          else if ($tmp3 === "X") this.FStructureTree.setItemIcons(aArt["sql_id"],pas.JS.New(["file","fa-comments","folder-opened","fa-comments","folder-closed","fa-comments"]));
       };
     };
+    this.TreeViewDblClick = function (id) {
+      var aTxt = "";
+      aTxt = this.FStructureTree.getItemText(id);
+      aTxt = pas.System.Copy(aTxt,pas.System.Pos("(",aTxt) + 1,aTxt.length);
+      aTxt = pas.System.Copy(aTxt,0,pas.System.Pos(")",aTxt) - 1);
+      pas.webrouter.Router().Push("masterdata\/by-id\/" + aTxt);
+    };
     this.DoLoadData = function () {
       this.CreateForm();
       pas.AvammForms.TAvammForm.DoLoadData.call(this);
       this.DoOpen();
     };
     this.CreateForm = function () {
-    };
-    this.DoOpen = function () {
       this.Tabs.addTab("structure",rtl.getResStr(pas.masterdata,"strStructure"),null,1,true,false);
       this.FStructureTree = rtl.getObject(this.Tabs.cells("structure").attachTreeView(pas.JS.New([])));
-      this.FStructureTree.addItem("root",this.FData["SHORTTEXT"]);
       this.FStructureTree.setIconset("font_awesome");
+      this.FStructureTree.attachEvent("onDblClick",rtl.createCallback(this,"TreeViewDblClick"));
+    };
+    this.DoOpen = function () {
+      this.FStructureTree.clearAll();
+      this.FStructureTree.addItem("root",this.FData["SHORTTEXT"]);
       this.FillStructure("root",rtl.getObject(this.FData["MDPOSITIONS"]));
       this.FStructureTree.openItem("root");
     };

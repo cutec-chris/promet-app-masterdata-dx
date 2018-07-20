@@ -12,6 +12,7 @@ type
   private
     FStructureTree : TDHTMLXTreeview;
     procedure FillStructure(root : JSValue;aData : TJSObject);
+    procedure TreeViewDblClick(id : JSValue);
   public
     procedure DoLoadData; override;
     procedure CreateForm;
@@ -89,6 +90,16 @@ begin
     end;
 end;
 
+procedure TMasterdataForm.TreeViewDblClick(id: JSValue);
+var
+  aTxt: String;
+begin
+  aTxt := FStructureTree.getItemText(id);
+  aTxt:=copy(aTxt,pos('(',aTxt)+1,length(aTxt));
+  aTxt:=copy(aTxt,0,pos(')',aTxt)-1);
+  router.Push('masterdata/by-id/'+aTxt);
+end;
+
 procedure TMasterdataForm.DoLoadData;
 begin
   CreateForm;
@@ -98,15 +109,16 @@ end;
 
 procedure TMasterdataForm.CreateForm;
 begin
-
+  Tabs.addTab('structure',strStructure,nil,1,true,false);
+  FStructureTree := TDHTMLXTreeview(Tabs.cells('structure').attachTreeView(js.new([])));
+  FStructureTree.setIconset('font_awesome');
+  FStructureTree.attachEvent('onDblClick',@TreeViewDblClick);
 end;
 
 procedure TMasterdataForm.DoOpen;
 begin
-  Tabs.addTab('structure',strStructure,nil,1,true,false);
-  FStructureTree := TDHTMLXTreeview(Tabs.cells('structure').attachTreeView(js.new([])));
+  FStructureTree.clearAll;
   FStructureTree.addItem('root',Data.Properties['SHORTTEXT']);
-  FStructureTree.setIconset('font_awesome');
   FillStructure('root',TJSObject(Data.Properties['MDPOSITIONS']));
   FStructureTree.openItem('root');
 end;
