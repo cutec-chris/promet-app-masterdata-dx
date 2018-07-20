@@ -77,7 +77,7 @@
   };
   $mod.$resourcestrings = {strMasterdata: {org: "Artikel"}, strStructure: {org: "Struktur"}};
   $mod.$init = function () {
-    if (pas.Avamm.getRight("masterdata") > 0) pas.Avamm.RegisterSidebarRoute(rtl.getResStr(pas.masterdata,"strMasterdata"),"masterdata",$mod.ShowMasterdataList);
+    if (pas.Avamm.getRight("masterdata") > 0) pas.Avamm.RegisterSidebarRoute(rtl.getResStr(pas.masterdata,"strMasterdata"),"masterdata",$mod.ShowMasterdataList,"fa-boxes");
     pas.webrouter.Router().RegisterRoute("\/masterdata\/by-id\/:Id\/",$mod.ShowMasterdata,false);
   };
 });

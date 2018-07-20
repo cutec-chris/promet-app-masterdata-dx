@@ -125,7 +125,7 @@ end;
 
 initialization
   if getRight('masterdata')>0 then
-    RegisterSidebarRoute(strMasterdata,'masterdata',@ShowMasterdataList);
+    RegisterSidebarRoute(strMasterdata,'masterdata',@ShowMasterdataList,'fa-boxes');
   Router.RegisterRoute('/masterdata/by-id/:Id/',@ShowMasterdata);
 end.
 
