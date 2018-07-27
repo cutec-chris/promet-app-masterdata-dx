@@ -44,7 +44,7 @@ begin
           Grid.setHeader('Nummer,Kurztext,Version,Status,Kategorie');
           Grid.setColumnIds('ID,SHORTTEXT,VERSION,STATUS,CATEGORY');
           FilterHeader := '#text_filter,#text_filter,#text_filter,#select_filter,#text_filter';
-          Grid.setInitWidths('150,*,70,100,150');
+          Grid.setInitWidthsP('10,60,10,10,10');
           Grid.init();
         end;
     end;

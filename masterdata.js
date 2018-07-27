@@ -70,7 +70,7 @@
       $with1.Grid.setHeader("Nummer,Kurztext,Version,Status,Kategorie");
       $with1.Grid.setColumnIds("ID,SHORTTEXT,VERSION,STATUS,CATEGORY");
       $with1.SetFilterHeader("#text_filter,#text_filter,#text_filter,#select_filter,#text_filter");
-      $with1.Grid.setInitWidths("150,*,70,100,150");
+      $with1.Grid.setInitWidthsP("10,60,10,10,10");
       $with1.Grid.init();
     };
     $mod.Masterdata.Show();
